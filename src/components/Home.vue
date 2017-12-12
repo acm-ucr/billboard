@@ -1,7 +1,7 @@
 <template>
   <div>
     <iframe class="w100 h33"
-      src="http://bcoelc.com"
+      src="https://bcoelc.com/#/"
       frameborder="0"
       scrolling="no"
     ></iframe>
