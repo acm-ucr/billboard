@@ -8,7 +8,7 @@ import VueApollo from 'vue-apollo'
 /* eslint-disable */
 const apolloClient = new ApolloClient({
   networkInterface: createNetworkInterface({
-    uri: 'http://localhost:8080/'
+    uri: 'http://acmucr-billboard-api.herokuapp.com/graphql'
   }),
   connectToDevTools: true
 })

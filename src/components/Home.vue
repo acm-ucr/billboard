@@ -29,9 +29,9 @@
 
     <div class="w50 h33 is-right announcements">
       <div class="w100 announcements-content">
-        <div v-if="!announcement.imageUrl">
-          <h1 class="announcements-header">{{ announcement.header }}</h1>
-          <p>{{ announcement.body }}</p>
+        <div v-if="!announcements[0].imageUrl">
+          <h1 class="announcements-header">{{ announcements[0].header }}</h1>
+          <p>{{ announcements[0].body }}</p>
         </div>
         <div v-else>
           <img class="w100" :src="announcement.imageUrl"/>
@@ -42,14 +42,27 @@
 </template>
 
 <script>
+import gql from 'graphql-tag'
+
 export default {
+  apollo: {
+    announcements: gql`
+      query {
+        getAnnouncements(last: 1) {
+          id
+          header
+          body
+        }
+      }
+    `
+  },
   data: function () {
     return {
-      announcement: {
-        header: 'Winter 2018',
-        body: 'Welcome back yall!',
-        imageUrl: 'https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg'
-      }
+      announcements: [{
+        header: '',
+        body: '',
+        imageUrl: ''
+      }]
     }
   }
 }
