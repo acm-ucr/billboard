@@ -27,15 +27,11 @@
       ></iframe>
     </div>
 
-    <div class="w50 h33 is-right announcements">
+    <div class="w50 h100 is-right announcements">
+      <img class="w100 image-container" :src="announcements[0].imageUrl" alt="Annoucement background">
       <div class="w100 announcements-content">
-        <div v-if="!announcements[0].imageUrl">
-          <h1 class="announcements-header">{{ announcements[0].header }}</h1>
-          <p>{{ announcements[0].body }}</p>
-        </div>
-        <div v-else>
-          <img class="w100" :src="announcement.imageUrl"/>
-        </div>
+        <h1 class="announcements-header">{{ announcements[0].header }}</h1>
+        <p>{{ announcements[0].body }}</p>
       </div>
     </div>
   </div>
@@ -45,23 +41,23 @@
 import gql from 'graphql-tag'
 
 export default {
-  apollo: {
-    announcements: gql`
-      query {
-        getAnnouncements(last: 1) {
-          id
-          header
-          body
-        }
-      }
-    `
-  },
+  // apollo: {
+  //   announcements: gql`
+  //     query {
+  //       getAnnouncements(last: 1) {
+  //         id
+  //         header
+  //         body
+  //       }
+  //     }
+  //   `
+  // },
   data: function () {
     return {
       announcements: [{
-        header: '',
-        body: '',
-        imageUrl: ''
+        header: 'Welcome Back!',
+        body: 'Sunt duis reprehenderit et in est incididunt amet do. Non nisi anim sunt excepteur. Velit culpa culpa proident eu nostrud consectetur nostrud nostrud est ad veniam. Officia ipsum velit labore deserunt. Nulla magna occaecat ad consectetur ullamco amet ea. Proident in pariatur duis sint. Pariatur eiusmod amet eiusmod culpa amet sunt ea irure.',
+        imageUrl: 'https://img.huffingtonpost.com/asset/585be1aa1600002400bdf2a6.jpeg?ops=scalefit_970_noupscale'
       }]
     }
   }
@@ -69,6 +65,11 @@ export default {
 </script>
 
 <style scoped>
+.image-container {
+  position: absolute;
+  z-index: -1;
+  filter: blur(10px) brightness(0.5);
+}
 iframe {
   overflow-y: hidden;
 }
@@ -92,5 +93,9 @@ iframe {
 }
 .announcements-content {
   text-align: center;
+  color: white;
+}
+p {
+  padding: 5px 30px;
 }
 </style>
